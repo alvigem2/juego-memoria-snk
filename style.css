@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
   backdrop-filter: brightness(0.9);
   color: white;
-  overflow-y: auto;
+  overflow-y: auto; /* Permite scroll vertical siempre */
 }
 
 /* Títulos y botones */
@@ -74,33 +74,37 @@ button:hover {
   margin: 0 auto;
 }
 
-/* Tablero: ajustado dinámicamente */
+/* Tablero: ajustado dinámicamente y responsivo */
 .tablero {
   display: grid;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px;
   gap: 8px;
   justify-content: center;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(10vw, 1fr));
-  max-width: 95vw;
+
+  /* Usamos auto-fit para que el grid se adapte dinámicamente */
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
 }
 
 /* Carta base */
 .carta {
   width: 100%;
+  max-width: 110px;
   aspect-ratio: 11 / 15;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-color: #000000aa;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   transform-style: preserve-3d;
   transition: transform 0.6s ease, border 0.2s ease;
   perspective: 1000px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background-color: #000000aa;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  cursor: pointer;
 }
 
 .carta:hover {
   transform: scale(1.05);
-  border: 2px solid #00c9ff;
+  border-color: #00c9ff;
   z-index: 10;
 }
 
@@ -145,7 +149,7 @@ button:hover {
   margin: 0 auto;
 }
 
-/* Botón sonido */
+/* Botón sonido fijo */
 #btnSonido {
   position: fixed;
   top: 15px;
@@ -166,26 +170,16 @@ button:hover {
   color: black;
 }
 
-/* Adaptaciones por tamaño */
-@media (max-width: 1024px) {
-  .tablero {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .tablero {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
+/* Media queries para tamaños pequeños */
 @media (max-width: 600px) {
   .tablero {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 5px;
+    max-width: 100%;
   }
 
   .carta {
-    aspect-ratio: 11 / 15;
+    max-width: 80px;
   }
 
   h1 {
@@ -199,5 +193,16 @@ button:hover {
   #btnSonido {
     font-size: 1.3rem;
     padding: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .tablero {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 4px;
+  }
+
+  .carta {
+    max-width: 60px;
   }
 }
