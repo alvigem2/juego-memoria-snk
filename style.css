@@ -21,6 +21,7 @@ body {
   overflow-y: auto;
 }
 
+/* Títulos */
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -29,6 +30,7 @@ h1 {
   text-align: center;
 }
 
+/* Textos y botones */
 p, button {
   margin: 10px;
   font-size: 1.1rem;
@@ -53,6 +55,7 @@ button:hover {
   border-color: white;
 }
 
+/* Info y botones alineados */
 .info, .botones {
   display: flex;
   gap: 15px;
@@ -61,6 +64,7 @@ button:hover {
   margin-bottom: 15px;
 }
 
+/* Contenedor centrado del tablero */
 .tablero-container {
   display: flex;
   justify-content: center;
@@ -71,15 +75,16 @@ button:hover {
   margin: 0 auto;
 }
 
-/* TABLERO RESPONSIVE AJUSTADO */
+/* Tablero responsivo adaptado dinámicamente */
 .tablero {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* máximo 6 columnas */
-  gap: 10px;
-  justify-content: center;
   width: 100%;
-  max-width: 800px;
-  margin-bottom: 20px;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  gap: 8px;
+  justify-content: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(min(22vw, 90px), 1fr));
 }
 
 /* Carta base */
@@ -87,12 +92,12 @@ button:hover {
   width: 100%;
   aspect-ratio: 11 / 15;
   border-radius: 10px;
-  border: 2px solid transparent;
   background-color: #000000aa;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   transform-style: preserve-3d;
   transition: transform 0.6s ease, border 0.2s ease;
   perspective: 1000px;
+  border: 2px solid transparent;
   cursor: pointer;
   position: relative;
 }
@@ -107,6 +112,7 @@ button:hover {
   transform: rotateY(180deg);
 }
 
+/* Caras de la carta */
 .cara {
   position: absolute;
   width: 100%;
@@ -143,6 +149,7 @@ button:hover {
   margin: 0 auto;
 }
 
+/* Botón sonido fijo en esquina */
 #btnSonido {
   position: fixed;
   top: 15px;
@@ -163,33 +170,21 @@ button:hover {
   color: black;
 }
 
-/* MEDIA QUERIES */
-@media (max-width: 1024px) {
-  .tablero {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .tablero {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
+/* Media queries para ajustes finos */
 @media (max-width: 600px) {
   .tablero {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(min(30vw, 80px), 1fr));
+    gap: 6px;
   }
-  .carta {
-    max-width: 90px;
-  }
+
   h1 {
     font-size: 1.5rem;
   }
+
   p, button {
     font-size: 1rem;
   }
+
   #btnSonido {
     font-size: 1.3rem;
     padding: 8px;
@@ -198,9 +193,7 @@ button:hover {
 
 @media (max-width: 400px) {
   .tablero {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .carta {
-    max-width: 70px;
+    grid-template-columns: repeat(auto-fit, minmax(min(40vw, 60px), 1fr));
+    gap: 4px;
   }
 }
