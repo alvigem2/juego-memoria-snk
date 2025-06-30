@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juego de Memoria - SNK</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Juego de Memoria - Shingeki no Kyojin</h1>
+
+  <div class="info">
+    <p>🧠 Intentos: <span id="intentos">0</span></p>
+    <p>⏱️ Tiempo: <span id="tiempo">00:00</span></p>
+  </div>
+
+  <div class="botones">
+    <button id="btnIniciar">🎮 Iniciar Juego</button>
+    <button id="btnReiniciar">🔁 Reiniciar</button> <!-- Cambié para quitar onclick -->
+    <button id="btnSonido" title="Activar/Desactivar música">🔊</button>
+  </div>
+
+  <div class="tablero-container">
+  <div class="tablero" id="tablero"></div>
+  </div>
+
+
+  <audio id="musica" loop muted>
+    <source src="audio/opening.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
