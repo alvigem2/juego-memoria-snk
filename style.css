@@ -18,10 +18,9 @@ body {
   min-height: 100vh;
   backdrop-filter: brightness(0.9);
   color: white;
-  overflow-y: auto; /* Permite scroll vertical siempre */
+  overflow-y: auto;
 }
 
-/* Títulos y botones */
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -54,7 +53,6 @@ button:hover {
   border-color: white;
 }
 
-/* Info y botones */
 .info, .botones {
   display: flex;
   gap: 15px;
@@ -63,7 +61,6 @@ button:hover {
   margin-bottom: 15px;
 }
 
-/* Contenedor del tablero */
 .tablero-container {
   display: flex;
   justify-content: center;
@@ -74,25 +71,21 @@ button:hover {
   margin: 0 auto;
 }
 
-/* Tablero: ajustado dinámicamente y responsivo */
+/* TABLERO RESPONSIVE AJUSTADO */
 .tablero {
   display: grid;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 20px;
-  gap: 8px;
+  grid-template-columns: repeat(6, 1fr); /* máximo 6 columnas */
+  gap: 10px;
   justify-content: center;
-
-  /* Usamos auto-fit para que el grid se adapte dinámicamente */
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
 /* Carta base */
 .carta {
   width: 100%;
-  max-width: 110px;
   aspect-ratio: 11 / 15;
-  cursor: pointer;
   border-radius: 10px;
   border: 2px solid transparent;
   background-color: #000000aa;
@@ -100,6 +93,8 @@ button:hover {
   transform-style: preserve-3d;
   transition: transform 0.6s ease, border 0.2s ease;
   perspective: 1000px;
+  cursor: pointer;
+  position: relative;
 }
 
 .carta:hover {
@@ -112,7 +107,6 @@ button:hover {
   transform: rotateY(180deg);
 }
 
-/* Caras de la carta */
 .cara {
   position: absolute;
   width: 100%;
@@ -149,7 +143,6 @@ button:hover {
   margin: 0 auto;
 }
 
-/* Botón sonido fijo */
 #btnSonido {
   position: fixed;
   top: 15px;
@@ -170,26 +163,33 @@ button:hover {
   color: black;
 }
 
-/* Media queries para tamaños pequeños */
+/* MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .tablero {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tablero {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
   .tablero {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    gap: 5px;
-    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
-
   .carta {
-    max-width: 80px;
+    max-width: 90px;
   }
-
   h1 {
     font-size: 1.5rem;
   }
-
   p, button {
     font-size: 1rem;
   }
-
   #btnSonido {
     font-size: 1.3rem;
     padding: 8px;
@@ -198,11 +198,9 @@ button:hover {
 
 @media (max-width: 400px) {
   .tablero {
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    gap: 4px;
+    grid-template-columns: repeat(2, 1fr);
   }
-
   .carta {
-    max-width: 60px;
+    max-width: 70px;
   }
 }
